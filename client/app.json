@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
+    "name": "Olay",
+    "slug": "Olay",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/olaylogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/olaylogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
