@@ -7,9 +7,9 @@
     "icon": "./assets/olaylogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/olaylogo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/l.png",
+      "resizeMode": "cover",
+      "backgroundColor": "yellow"
     },
     "assetBundlePatterns": [
       "**/*"
