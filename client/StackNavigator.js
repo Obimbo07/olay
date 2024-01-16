@@ -9,9 +9,9 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="HomeStack" component={HomeScreen} />
+      <Stack.Screen name="HomeStack" component={HomeScreen}  options={{ headerShown: false }}/>
       <Stack.Screen name="Settings" component={SettingsScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} options={{ tabBarVisible: false }} />
     </Stack.Navigator>
   );
 };

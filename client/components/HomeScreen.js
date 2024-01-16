@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 
 const HomeScreen = () => {
   const balance = 5000;
@@ -13,20 +14,36 @@ const HomeScreen = () => {
     { id: '6', name: 'western Kid Trift', amount: 2000 },
   ];
 
+  const handleVmClick = (investmentid) => {
+    console.log(`Clicked on investment with id: ${investmentid}`)
+  }
+  
   const renderInvestmentCard = ({ item }) => (
-    <View style={styles.investmentCard}>
+    <TouchableOpacity>
+    <View style={styles.investmentCard} onPress={() => handrrleVmClick(item.id)}>
       <Text>{item.name}</Text>
       <Text>Amount: ${item.amount}</Text>
     </View>
+    </TouchableOpacity>
   );
 
   return (
+    
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Hi Austin</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Ionicons name="person-outline" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+
       <View style={styles.balanceSection}>
         <Text style={styles.balanceText}>Balance: </Text>
         <Text style={styles.balanceAmt}> $ {balance} </Text>
       </View>
 
+      <Text>Below are your active Vm Investments</Text>
       <FlatList 
         style={styles.cardList}
         data={activeInvestments}
@@ -49,6 +66,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 16,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 30,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   balanceSection: {
     alignItems: 'left',
