@@ -5,6 +5,7 @@ import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import SignUpScreen from './components/login_auth/SignUpScreen';
 import SignInScreen from './components/login_auth/SignInScreen';
+import AddInvestment from './components/Investment/AddInvestment';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ tabBarVisible: false }} />
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{ title: 'Sign Up' }} />
       <Stack.Screen name="SignIn" component={SignInScreen} options={{ title: 'Sign In' }} />
+      <Stack.Screen name="AddInvestment" component={AddInvestment} />
     </Stack.Navigator>
   );
 };

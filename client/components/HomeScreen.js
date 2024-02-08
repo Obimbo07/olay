@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation as named export
 
 const HomeScreen = () => {
+  const navigation = useNavigation(); // Call useNavigation as a function
   const balance = 5000;
   const activeInvestments = [
     { id: '1', name: 'Tech Company', amount: 1000 },
@@ -19,11 +21,11 @@ const HomeScreen = () => {
   }
   
   const renderInvestmentCard = ({ item }) => (
-    <TouchableOpacity>
-    <View style={styles.investmentCard} onPress={() => handrrleVmClick(item.id)}>
-      <Text>{item.name}</Text>
-      <Text>Amount: ${item.amount}</Text>
-    </View>
+    <TouchableOpacity onPress={() => handleVmClick(item.id)}>
+      <View style={styles.investmentCard}>
+        <Text>{item.name}</Text>
+        <Text>Amount: ${item.amount}</Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -52,7 +54,7 @@ const HomeScreen = () => {
         numColumns={2}
       />
 
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddInvestment')}>
         <Text style={styles.addButtonText}>Add New Investment</Text>
       </TouchableOpacity>
 

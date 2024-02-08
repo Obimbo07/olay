@@ -7,6 +7,7 @@ import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import SignUpScreen from './components/login_auth/SignUpScreen';
 import SignInScreen from './components/login_auth/SignInScreen';
+import AddInvestment from './components/Investment/AddInvestment';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,6 +18,8 @@ const HomeStack = () => {
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="AddInvestment" component={AddInvestment} />
+      
     </Stack.Navigator>
   );
 };
