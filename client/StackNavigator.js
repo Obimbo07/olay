@@ -6,6 +6,7 @@ import ProfileScreen from './components/ProfileScreen';
 import SignUpScreen from './components/login_auth/SignUpScreen';
 import SignInScreen from './components/login_auth/SignInScreen';
 import AddInvestment from './components/Investment/AddInvestment';
+import ShowInvestment from './components/Investment/ShowInvestment';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const StackNavigator = () => {
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{ title: 'Sign Up' }} />
       <Stack.Screen name="SignIn" component={SignInScreen} options={{ title: 'Sign In' }} />
       <Stack.Screen name="AddInvestment" component={AddInvestment} />
+      <Stack.screen name="ShowInvestment" component={ShowInvestment} />
     </Stack.Navigator>
   );
 };

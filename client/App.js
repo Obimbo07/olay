@@ -8,6 +8,7 @@ import ProfileScreen from './components/ProfileScreen';
 import SignUpScreen from './components/login_auth/SignUpScreen';
 import SignInScreen from './components/login_auth/SignInScreen';
 import AddInvestment from './components/Investment/AddInvestment';
+import ShowInvestment from './components/Investment/ShowInvestment';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,11 +16,11 @@ const Tab = createBottomTabNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Screenr" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="AddInvestment" component={AddInvestment} />
-      
+      <Stack.Screen name="ShowInvestment" component={ShowInvestment} />  
     </Stack.Navigator>
   );
 };
