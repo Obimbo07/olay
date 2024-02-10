@@ -19,6 +19,7 @@ const HomeScreen = () => {
   const handleVmClick = (investment) => {
     navigation.navigate('ShowInvestment', { investment });
   }
+
   
   const renderInvestmentCard = ({ item }) => (
     <TouchableOpacity onPress={() => handleVmClick(item)}>
@@ -54,8 +55,8 @@ const HomeScreen = () => {
         numColumns={2}
       />
 
-      <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddInvestment')}>
-        <Text style={styles.addButtonText}>Add New Investment</Text>
+      <TouchableOpacity style={styles.addButton}>
+        <Text style={styles.addButtonText} onPress={() => navigation.navigate('AddInvestment')}>Add New Investment</Text>
       </TouchableOpacity>
 
       <StatusBar style="auto" />

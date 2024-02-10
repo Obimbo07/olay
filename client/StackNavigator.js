@@ -19,7 +19,7 @@ const StackNavigator = () => {
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{ title: 'Sign Up' }} />
       <Stack.Screen name="SignIn" component={SignInScreen} options={{ title: 'Sign In' }} />
       <Stack.Screen name="AddInvestment" component={AddInvestment} />
-      <Stack.screen name="ShowInvestment" component={ShowInvestment} />
+      <Stack.Screen name="ShowInvestment" component={ShowInvestment} />
     </Stack.Navigator>
   );
 };

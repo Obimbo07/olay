@@ -1,21 +1,13 @@
-from flask import Flask, jsonify
-import mysql.connector
+from flask import Flask
+from app.models import db
+from app.routes import api
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/database_name'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="austsolay",
-    password="000000",
-    database="olay"
-)
+db.init_app(app)
+app.register_blueprint(api, url_prefix='/api')
 
-@app.route('/data', methods=['GET'])
-def get_data():
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM users")
-    data = cursor.fetchall()
-    return jsonify(data)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
