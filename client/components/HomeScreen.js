@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const balance = 5000;
   const activeInvestments = [
     { id: '1', name: 'Tech Company', amount: 1000 },
@@ -13,19 +16,37 @@ const HomeScreen = () => {
     { id: '6', name: 'western Kid Trift', amount: 2000 },
   ];
 
+  const handleVmClick = (investment) => {
+    navigation.navigate('ShowInvestment', { investment });
+  }
+
+  
   const renderInvestmentCard = ({ item }) => (
-    <View style={styles.investmentCard}>
-      <Text>{item.name}</Text>
-      <Text>Amount: ${item.amount}</Text>
-    </View>
+    <TouchableOpacity onPress={() => handleVmClick(item)}>
+      <View style={styles.investmentCard}>
+        <Text>{item.name}</Text>
+        <Text>Amount: ${item.amount}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
+    
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Hi Austin</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Ionicons name="person-outline" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+
       <View style={styles.balanceSection}>
         <Text style={styles.balanceText}>Balance: </Text>
         <Text style={styles.balanceAmt}> $ {balance} </Text>
       </View>
+
+      <Text>Below are your active Vm Investments</Text>
 
       <FlatList 
         style={styles.cardList}
@@ -36,7 +57,7 @@ const HomeScreen = () => {
       />
 
       <TouchableOpacity style={styles.addButton}>
-        <Text style={styles.addButtonText}>Add New Investment</Text>
+        <Text style={styles.addButtonText} onPress={() => navigation.navigate('AddInvestment')}>Add New Investment</Text>
       </TouchableOpacity>
 
       <StatusBar style="auto" />
@@ -49,6 +70,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 16,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 30,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   balanceSection: {
     alignItems: 'left',
@@ -65,7 +97,6 @@ const styles = StyleSheet.create({
   },
   cardList: {
     display: 'flex',
-    
   },
   investmentCard: {
     backgroundColor: '#e1e1e1',
