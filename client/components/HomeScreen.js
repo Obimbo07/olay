@@ -47,6 +47,7 @@ const HomeScreen = () => {
       </View>
 
       <Text>Below are your active Vm Investments</Text>
+
       <FlatList 
         style={styles.cardList}
         data={activeInvestments}
@@ -96,7 +97,6 @@ const styles = StyleSheet.create({
   },
   cardList: {
     display: 'flex',
-    
   },
   investmentCard: {
     backgroundColor: '#e1e1e1',

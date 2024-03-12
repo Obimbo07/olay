@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     margin: 5,
     borderRadius: 10,
-    borderColor: 'yellow',
+    borderColor: 'black',
+    backgroundColor: 'yellow',
     borderWidth: 2
   },
   zeroButton: {

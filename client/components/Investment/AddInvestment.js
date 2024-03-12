@@ -19,7 +19,6 @@ const AddInvestment = () => {
     );
 
     const handleInvestmentSelection = (investment) => {
-        // Implement logic to handle investment selection
         console.log("Selected Investment:", investment);
     };
 
