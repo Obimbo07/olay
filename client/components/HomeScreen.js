@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUsers } from '../redux/user/userSlice';
+
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.user.data);
+  console.log(users);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch])
+
   const balance = 5000;
   const activeInvestments = [
     { id: '1', name: 'Tech Company', amount: 1000 },
@@ -34,7 +45,7 @@ const HomeScreen = () => {
     
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Hi Austin</Text>
+        <Text style={styles.headerTitle}>{users.length > 0 ? users[0].name : 'Loading...'}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person-outline" size={24} color="black" />
         </TouchableOpacity>
