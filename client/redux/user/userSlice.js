@@ -11,7 +11,6 @@ export const fetchUsers = createAsyncThunk(
                 throw new Error('Failed to fetch users');
             }
             const data = await response.json();
-            console.log(data);
             return data;
         } catch (error) {
             throw new Error(error.message);
@@ -38,7 +37,6 @@ export const userSlice = createSlice({
         .addCase(fetchUsers.fulfilled, (state, action) => {
           state.loading = false;
           state.data = action.payload;
-          console.log(state.data);
         })
         .addCase(fetchUsers.rejected, (state, action) => {
             state.loading = false;

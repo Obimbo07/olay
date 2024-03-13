@@ -11,7 +11,6 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.data);
-  console.log(users);
 
   useEffect(() => {
     dispatch(fetchUsers());
