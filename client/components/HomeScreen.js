@@ -44,7 +44,7 @@ const HomeScreen = () => {
     
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>{users.length > 0 ? users[0].name : 'Loading...'}</Text>
+        <Text style={styles.headerTitle}>Hello, {users.length > 0 ? users[0].email : 'Loading...'}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person-outline" size={24} color="black" />
         </TouchableOpacity>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
+    color: '#0000',
     fontWeight: 'bold',
   },
   balanceSection: {

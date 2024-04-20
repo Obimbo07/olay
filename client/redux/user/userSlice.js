@@ -18,6 +18,7 @@ export const fetchUsers = createAsyncThunk(
     }
 );
 
+
 const initialState = {
     data: [],
     loading: false,
@@ -32,7 +33,7 @@ export const userSlice = createSlice({
       builder
         .addCase(fetchUsers.pending, (state) => {
           state.loading = true;
-          state.error = null; // Reset error state
+          state.error = null;
         })
         .addCase(fetchUsers.fulfilled, (state, action) => {
           state.loading = false;
