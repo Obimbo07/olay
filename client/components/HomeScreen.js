@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUsers } from '../redux/user/userSlice';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.user.data);
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -30,14 +26,13 @@ const HomeScreen = () => {
     navigation.navigate('ShowInvestment', { investment });
   }
 
-  
   const renderInvestmentCard = ({ item }) => (
-    <TouchableOpacity onPress={() => handleVmClick(item)}>
+    <Pressable on onPress={() => handleVmClick(item)}>
       <View style={styles.investmentCard}>
-        <Text>{item.name}</Text>
-        <Text>Amount: ${item.amount}</Text>
+        <Text style={styles.text}>{item.name}</Text>
+        <Text style={styles.text} >Amount: ${item.amount}</Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 
   return (
@@ -45,9 +40,9 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Hello, {users.length > 0 ? users[0].email : 'Loading...'}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <Pressable style={styles.profIcon} onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person-outline" size={24} color="black" />
-        </TouchableOpacity>
+        </Pressable>
       </View>
 
 
@@ -66,9 +61,9 @@ const HomeScreen = () => {
         numColumns={2}
       />
 
-      <TouchableOpacity style={styles.addButton}>
+      <Pressable style={styles.addButton}>
         <Text style={styles.addButtonText} onPress={() => navigation.navigate('AddInvestment')}>Add New Investment</Text>
-      </TouchableOpacity>
+      </Pressable>
 
       <StatusBar style="auto" />
     </View>
@@ -78,7 +73,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'gold',
     padding: 16,
   },
   header: {
@@ -90,8 +85,8 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    color: '#0000',
-    fontWeight: 'bold',
+    backgroundColor: '#0000',
+    fontFamily: 'Poppins '
   },
   balanceSection: {
     alignItems: 'left',
@@ -99,24 +94,31 @@ const styles = StyleSheet.create({
   },
   balanceText: {
     fontSize: 18,
-    fontFamily: 'serif',
+    fontFamily: 'Poppins',
     fontWeight: 'bold',
   },
   balanceAmt: {
     fontSize: 30,
     fontWeight: 'bold',
+    fontFamily: 'Poppins',
   },
   cardList: {
     display: 'flex',
   },
   investmentCard: {
-    backgroundColor: '#e1e1e1',
+    backgroundColor: 'black',
+    fontFamily: 'Poppins',
     padding: 16,
     marginVertical: 10,
     marginRight: 10,
     borderRadius: 8,
     width: 170,
   },
+  text: {
+     fontFamily: 'Poppins',
+     fontSize: 15,
+     color: 'gold',
+    },
   addButton: {
     backgroundColor: 'blue',
     padding: 16,
@@ -129,6 +131,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  profIcon: {
+    backgroundColor: 'rgb(255, 215, 0)',
+    padding: 5,
+    borderColor: 'rgba(0, 0 ,0 ,0.2)',
+    borderWidth: 3,
+    borderRadius: 20,
+  }
 });
 
 export default HomeScreen;
